@@ -1,0 +1,48 @@
+{% extends 'admin/layout.html' %}
+{% block content %}
+  <div class="section-title" style="margin-top: 150px;">
+    <h2>All Post</h2>
+  </div>
+
+  {% if posts %}
+    <div id="post-list">
+      {% for post in posts.items %}
+        <div class="row mt post-box" style="margin-top: 60px;">
+
+          <div class="col-lg-3 col-md-3 col-xs-12 desc" style="padding-left: 20px; padding-right: 20px; text-align: center;">
+
+            <a class="b-link-fade b-animate-go" href="#"><img src="{{ url_for('static', filename='img/' + post.picture_file) }}"/>
+            </a>
+                
+          </div>
+
+          <div class="col-lg-8 col-md-8 col-xs-12 desc">
+            <h3> <a href="{{ url_for('admin_b.post', post_id=post.id) }}"> {{ post.title }} </a> </h3>
+            <p> {{ post.description }} </p>
+            <hr-d>
+            <p class="time"><i class="bx bx-calendar"></i> {{ post.date.strftime('%d %B %Y') }} </p>
+            <a href="{{ url_for('admin_b.post_delete', post_id=post.id) }}" class="btn-general" style="margin-top: 0;">Delete This Post</a>
+          </div>
+
+        </div>
+      {% endfor %}
+      <div class="section-title" style="margin-top: 150px;">
+        {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+        {% if page_num %}
+          {% if posts.page == page_num %}
+            <a class="btn btn-info mb-4" href="{{ url_for('admin_b.home', page=page_num) }}">{{ page_num }}</a>
+          {% else %}
+            <a class="btn btn-outline-info mb-4" href="{{ url_for('admin_b.home', page=page_num) }}">{{ page_num }}</a>
+          {% endif %}
+        {% else %}
+          ...
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  {% else %}
+    <div class="section-title" style="margin-top: 150px;">
+      <h3>No posts yet</h3>
+    </div>
+  {% endif %}
+{% endblock %}

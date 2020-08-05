@@ -1,0 +1,110 @@
+{% extends 'main/layout.html' %}
+{% block content %}
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+      <div class="row justify-content-center">
+        <div class="col-xl-7 col-lg-9 text-center">
+          <h1>Indonesian Student Association of QUT</h1>
+        </div>
+      </div>
+  
+      </div>
+
+    </div>
+  </section>
+
+  <main id="main">
+    <!-- ======= Post Section ======= -->
+    <section id="latest-post" class="about">
+
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Latest Post</h2>
+        </div>
+        
+        <div class="row mt">
+          {% for post in posts %}
+            
+              <div class="col-lg-4 col-md-4 col-xs-12 desc" style="padding-left: 50px; padding-right: 50px;">
+
+                <a class="b-link-fade b-animate-go" ><img width="100%" src="{{ url_for('static', filename='img/' + post.picture_file) }}" />
+                </a>
+                <p style="min-height: 40px; overflow: hidden; text-align: center; font-size: 18px;"> <b><a href="{{ url_for('main_b.post', post_id=post.id) }}"> {{ post.title }} </a></b> </p>
+                <p style="max-height: 150px; overflow: hidden;">{{ post.description }}</p>
+                <hr-d>
+                  <p class="time"><i class="bx bx-calendar"></i> {{ post.date.strftime('%d %B %Y') }} </p>
+              </div>
+            
+          {% endfor %}
+        </div>
+
+        <a href="{{ url_for('main_b.posts') }}" class="btn-general">All Posts</a>
+      </div>
+      
+    </section><!-- End Post Section -->
+
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>About Us</h2>
+        </div>
+
+        <div class="row content">
+          <div class="col-lg-6">
+            <img width="90%" src="{{url_for('static', filename='img/bg01.JPG') }}" alt="" />
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0">
+            <p>
+              Indonesian Student Association of QUT (ISAQ) is a branch of Indonesian organisation named Perhimpunan Pelajar Indonesia Australia (PPIA) that facilitates the entire community of Indonesian students who conducted study at the Queensland University of Technology (QUT) to assist and build a network with one another. ISAQ is also widely open to all other QUT students who are interested in Indonesia. Through ISAQ, all members can receive the latest updates about the study news, events and exciting activities.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Contact Us</h2>
+        </div>
+
+        <div>
+          <iframe style="border:0; width: 100%; height: 270px;" src="https://maps.google.com/maps?q=qut&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <div class="row mt-5">
+
+          <div class="col-lg-4">
+            <div class="info">
+              <div class="address">
+                <i class="icofont-google-map"></i>
+                <h4>Location:</h4>
+                <p>2 George St, Brisbane City QLD 4000</p>
+              </div>
+
+              <div class="email">
+                <i class="icofont-envelope"></i>
+                <h4>Email:</h4>
+                <p>isaq@isa-qut.org</p>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+{% endblock %}
+

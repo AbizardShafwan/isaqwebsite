@@ -1,0 +1,28 @@
+{% extends 'main/layout.html' %}
+{% block style %}
+<style>
+  .container p{
+    color: black;
+  }
+  #content-text{
+      font-size: 15px;
+      text-align: left;
+  }
+</style>
+{% endblock %}
+{% block content %}
+
+  <div class="container">
+    <div class="section-title" style="margin-top: 150px;">
+      <img src="{{ url_for('static', filename='img/'+post.picture_file) }}" style="max-height: 300px;">
+      <h2 style="margin-top: 30px;">{{ post.title }}</h2>
+      <hr-d>
+          <p class="time" style="color: black; font-size: 18px; font-weight: 700;"><i class="bx bx-calendar"></i>{{ post.date.strftime('%d %B %Y') }}</p>
+      <p id="content-text" style="margin-top: 30px;">{{ post.description }}</p>
+
+      {% if post.registration_link %}
+        <a href="{{ post.registration_link }}" class="btn-general">REGISTER</a>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

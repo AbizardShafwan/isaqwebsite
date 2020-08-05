@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>ISAQ</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{{ url_for('static', filename='img/Logo-noname.png') }}" rel="icon">
+  <link href="{{ url_for('static', filename='img/Logo-noname.png') }}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/icofont/icofont.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/venobox/venobox.css') }}" rel="stylesheet">
+  
+  <link href="{{ url_for('static', filename='vendor/aos/aos.css') }}" rel="stylesheet"> 
+
+  <!-- Template Main CSS File -->
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
+  {% block style %}
+  {% endblock %}
+</head>
+
+<body>
+    
+    
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center">
+
+            <a href="{{ url_for('main_b.home') }}" class="logo mr-auto"><img src="{{ url_for('static', filename='img/Logo.png') }}" class="img-fluid"></a>
+            <nav class="nav-menu d-none d-lg-block">
+                    <ul>
+                        <li><a href="{{ url_for('main_b.home') }}">Home</a></li>
+                        {% if home %}
+                            <li><a href="#latest-post">Posts</a></li>
+                            <li><a href="#about">About Us</a></li>
+                            <li><a href="#contact">Contact Us</a></li>
+                        {% else %}
+                            <li><a href="{{ url_for('main_b.posts') }}">Posts</a></li>
+                            <li><a href="{{ url_for('main_b.home') }}#about">About Us</a></li>
+                            <li><a href="{{ url_for('main_b.home') }}#contact">Contact Us</a></li>
+                        {% endif %}
+                    </ul>
+            </nav><!-- .nav-menu -->
+        </div>
+    </header><!-- End Header -->
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+
+        <div class="container d-md-flex py-4">
+
+        <div class="mr-md-auto text-center text-md-left">
+            
+        </div>
+        <div class="social-links text-center text-md-right pt-3 pt-md-0">
+            <a href="https://twitter.com/ppia_qut" class="twitter"><i class="bx bxl-twitter"></i></a>
+            <a href="https://fb.com/ppiaisaq" class="facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="https://instagram.com/ppiaqut" class="instagram"><i class="bx bxl-instagram"></i></a>
+        </div>
+        </div>
+    </footer><!-- End Footer -->
+
+    <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
+    <div id="preloader"></div>
+
+
+  <!-- Vendor JS Files -->
+  <script src=" {{url_for('static', filename='vendor/jquery/jquery.min.js')}} "></script>
+  <script src="{{url_for('static', filename=' vendor/bootstrap/js/bootstrap.bundle.min.j')}}s "></script>
+  <script src=" {{url_for('static', filename='vendor/jquery.easing/jquery.easing.min.js')}} "></script>
+  <script src=" {{url_for('static', filename='vendor/php-email-form/validate.js')}} "></script>
+  <script src=" {{url_for('static', filename='vendor/waypoints/jquery.waypoints.min.js')}} "></script>
+  <script src=" {{url_for('static', filename='vendor/counterup/counterup.min.js')}} "></script>
+  <script src=" {{url_for('static', filename='vendor/venobox/venobox.min.js')}} "></script>
+  <script src=" {{url_for('static', filename='vendor/owl.carousel/owl.carousel.min.js')}} "></script>
+  <script src=" {{url_for('static', filename='vendor/isotope-layout/isotope.pkgd.min.js')}} "></script>
+  <script src=" {{url_for('static', filename='vendor/aos/aos.js')}} "></script>
+
+  <!-- Template Main JS File -->
+  <script src=" {{url_for('static', filename='js/main.js')}} "></script>
+
+</body>
+
+</html>
