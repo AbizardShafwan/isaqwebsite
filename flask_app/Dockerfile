@@ -6,6 +6,7 @@ RUN apk update
 RUN apk add --no-cache gcc
 RUN apk add --no-cache libffi-dev
 RUN apk add --no-cache musl-dev
+RUN python3 -m pip install --upgrade pip
 
 WORKDIR /opt/app
 
@@ -28,7 +29,7 @@ ENV PATH="/home/$USER/.local/bin:${PATH}"
 # Copy requirements file to our container, install, and remove
 # files to we don't need to reduce the container size
 COPY requirements.txt .
-RUN pip install \
+RUN pip3 install --upgrade \
     --no-cache-dir \
     --no-warn-script-location \
     --user \
