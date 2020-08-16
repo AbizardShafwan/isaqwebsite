@@ -1,5 +1,5 @@
 # Flask app Dockerfile
-FROM python:3.8
+FROM python:3.8.3-alpine3.11
 
 # Install needed dependencies for our app to run.
 RUN apk update
