@@ -5,7 +5,7 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-domains=(runforrestrun.tk)
+domains=(www.runforrestrun.tk)
 rsa_key_size=4096
 data_path="./data/certbot"
 email="abizardshafwan@gmail.com" # Adding a valid address is strongly recommended
