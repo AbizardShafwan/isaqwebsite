@@ -1,5 +1,5 @@
 # Flask app Dockerfile
-FROM python:3.8.3-alpine3.11
+FROM python:3.6-alpine
 
 # Install needed dependencies for our app to run.
 RUN apk update
@@ -7,11 +7,6 @@ RUN apk add --no-cache gcc
 RUN apk add --no-cache libffi-dev
 RUN apk add --no-cache musl-dev
 RUN python3 -m pip install --upgrade pip
-RUN apt-get install python3-dev python3-setuptools
-RUN apt-get install libtiff5-dev libjpeg8-dev libopenjp2-7-dev zlib1g-dev \
-    libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python3-tk \
-    libharfbuzz-dev libfribidi-dev libxcb1-dev
-
 
 WORKDIR /opt/app
 
