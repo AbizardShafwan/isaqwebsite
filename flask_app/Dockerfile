@@ -2,11 +2,10 @@
 FROM python:3.8
 
 # Install needed dependencies for our app to run.
-RUN apk update \
-  && apk add --no-cache \
-    gcc \
-    libffi-dev \
-    musl-dev
+RUN apk update
+RUN apk add --no-cache gcc
+RUN apk add --no-cache libffi-dev
+RUN apk add --no-cache musl-dev
 
 WORKDIR /opt/app
 
