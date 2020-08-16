@@ -14,10 +14,10 @@ services:
         ports:
             - "8000:8000"
         command: gunicorn -w 1 -b 0.0.0.0:8000 app:app
-    
+        networks:
+            - my-network    
     nginx:
         container_name: nginx
-        restart: always
         build: ./nginx
         volumes:
             - static_volume:/home/isaq/flask_app/ISAQ/static
@@ -30,7 +30,8 @@ services:
             - "443:443"
         depends_on:
             - flask_app
-
+        networks:
+            - my-network
     certbot:
         image: certbot/certbot
         volumes:
