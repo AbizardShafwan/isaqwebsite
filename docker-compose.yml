@@ -10,7 +10,7 @@ services:
             - SECRET_KEY=20913b25e91768f01b7ad93766783c8b
             - SQLALCHEMY_DATABASE_URI=sqlite:///isaqwebsite.db
         volumes:
-            - static_volume:/flask_app/ISAQ/static
+            - static_volume:/usr/src/flask_app/ISAQ/static
         ports:
         - "8000:8000"
         command: gunicorn -w 1 -b 0.0.0.0:8000 app:app
@@ -20,7 +20,7 @@ services:
         restart: always
         build: ./nginx
         volumes:
-            - static_volume:/flask_app/ISAQ/static
+            - static_volume:/usr/src/flask_app/ISAQ/static
         ports:
             - "80:80"
         depends_on:
