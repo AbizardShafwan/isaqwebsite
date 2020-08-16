@@ -1,30 +1,33 @@
-version: '3'
+# docker-compose file managing Nginx and the application
+# Loading some variables from the .env file:
+#   - DOMAIN: DNS domain name
+#   - EMAIL: Maintainer email
+#   - APP_FOLDER: Directory containing the application
+#   - FLASK_APP: Flask entrypoint
+#   - FLASK_ENV: Flask environment
+
+version: "3.2"
 
 services:
+  nginx:
+    build:
+      context: ./nginx
+      args:
+        DOMAIN: ${DOMAIN}
+        EMAIL: ${EMAIL}
+        FLASK: application
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
+    depends_on:
+      - application
 
-    flask_app:
-        container_name: flask_app
-        restart: always
-        build: ./flask_app
-        environment: 
-            - SECRET_KEY=20913b25e91768f01b7ad93766783c8b
-            - SQLALCHEMY_DATABASE_URI=sqlite:///isaqwebsite.db
-        volumes:
-            - static_volume:/usr/src/flask_app/ISAQ/static
-        ports:
-        - "8000:8000"
-        command: gunicorn -w 1 -b 0.0.0.0:8000 app:app
-    
-    nginx:
-        container_name: nginx
-        restart: always
-        build: ./nginx
-        volumes:
-            - static_volume:/usr/src/flask_app/ISAQ/static
-        ports:
-            - "80:80"
-        depends_on:
-            - flask_app
-
-volumes: 
-    static_volume:
+  application:
+    build: ./${APP_FOLDER}
+    command: gunicorn -c gunicorn.ini.py ${FLASK_APP}:app
+    environment:
+      - FLASK_ENV=${FLASK_ENV}
+    ports:
+      - 5000:5000
