@@ -6,7 +6,10 @@ RUN apk update
 RUN apk add --no-cache gcc
 RUN apk add --no-cache libffi-dev
 RUN apk add --no-cache musl-dev
+RUN apk add --no-cache libjpeg
+RUN apk add --no-cache zlib
 RUN python3 -m pip install --upgrade pip
+RUN python3 -m pip install --upgrade Pillow
 
 WORKDIR /opt/app
 
@@ -29,8 +32,7 @@ ENV PATH="/home/$USER/.local/bin:${PATH}"
 # Copy requirements file to our container, install, and remove
 # files to we don't need to reduce the container size
 COPY requirements.txt .
-RUN pip3 install pillow
-RUN pip3 install --upgrade \
+RUN pip3 install \
     --no-cache-dir \
     --no-warn-script-location \
     --user \
