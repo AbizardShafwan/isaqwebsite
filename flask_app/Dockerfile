@@ -8,8 +8,6 @@ RUN apk add --no-cache libffi-dev
 RUN apk add --no-cache musl-dev
 RUN apk add --no-cache libjpeg
 RUN apk add --no-cache zlib
-RUN python3 -m pip install --upgrade pip
-RUN python3 -m pip install --upgrade Pillow
 
 WORKDIR /opt/app
 
