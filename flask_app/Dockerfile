@@ -2,11 +2,11 @@
 FROM python:3.8
 
 # create directory for the app user
-RUN mkdir -p /home/flask_app
+RUN mkdir -p /home/isaq
 
 # create the appropriate directories
-ENV HOME=/home/flask_app
-ENV APP_HOME=/home/flask_app
+ENV HOME=/home/isaq
+ENV APP_HOME=/home/isaq/flask_app
 
 RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
