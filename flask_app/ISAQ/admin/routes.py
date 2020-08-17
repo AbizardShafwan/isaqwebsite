@@ -148,7 +148,12 @@ def post_update(post_id):
 @login_required
 def post_delete(post_id):
     post = Post.query.get_or_404(post_id)
-    db.session.delete(post)
-    db.session.commit()
-    flash('Your post has been deleted!', 'success')
+    try:
+        delete_path = os.path.join(current_app.root_path, 'static/img', post.picture_file)
+        os.remove(delete_path)
+        db.session.delete(post)
+        db.session.commit()
+        flash('Your post has been deleted!', 'success')
+    except Exception as ex:
+        print(ex)
     return redirect(url_for('admin_b.home'))
